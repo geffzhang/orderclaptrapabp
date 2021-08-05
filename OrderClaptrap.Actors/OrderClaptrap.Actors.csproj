@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newbe.Claptrap" Version="0.10.2" />
+    <PackageReference Include="Newbe.Claptrap.DataSerializer.TextJson" Version="0.10.2" />
+    <PackageReference Include="Newbe.Claptrap.Dapr" Version="0.10.2" />
+    <PackageReference Include="Newbe.Claptrap.StorageProvider.Relational" Version="0.10.2" />
+    <PackageReference Include="Volo.Abp.Ddd.Domain" Version="4.3.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Modules\OrderClaptrap.EntityFrameworkCore\OrderClaptrap.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\OrderClaptrap.IActor\OrderClaptrap.IActor.csproj" />
+    <ProjectReference Include="..\OrderClaptrap.Models\OrderClaptrap.Models.csproj" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,53 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.7">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Tye.Extensions.Configuration" Version="0.8.0-alpha.21352.1" />
+    <PackageReference Include="Newbe.Claptrap.StorageProvider.MySql" Version="0.10.2" />
+    <PackageReference Include="OpenTelemetry" Version="1.0.1" />
+    <PackageReference Include="OpenTelemetry.Exporter.Zipkin" Version="1.0.1" />
+    <PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="1.0.0-rc2" />
+    <PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.0.0-rc2" />
+    <PackageReference Include="OpenTelemetry.Instrumentation.GrpcNetClient" Version="1.0.0-rc2" />
+    <PackageReference Include="OpenTelemetry.Instrumentation.Http" Version="1.0.0-rc2" />
+    <PackageReference Include="Newbe.Claptrap.Dapr" Version="0.10.2" />
+    <PackageReference Include="Newbe.Claptrap.Dapr.Hosting" Version="0.10.2" />
+    <PackageReference Include="Newbe.Claptrap.EventCenter.Dapr" Version="0.10.2" />
+    <PackageReference Include="Volo.Abp.Autofac" Version="4.3.3" />
+    <PackageReference Include="Volo.Abp.EntityFrameworkCore.MySQL" Version="4.3.3" />
+    <PackageReference Include="Volo.Abp.Swashbuckle" Version="4.3.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Modules\OrderClaptrap.EntityFrameworkCore\OrderClaptrap.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\OrderClaptrap.Actors\OrderClaptrap.Actors.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="components\claptrap_config.yaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="components\pubsub.yaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="components\statestore.yaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="dapr_components\claptrap_config.yaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="dapr_components\pubsub.yaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="dapr_components\statestore.yaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+</Project>

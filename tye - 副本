@@ -1,0 +1,79 @@
+# tye application configuration file
+# read all about it at https://github.com/dotnet/tye
+#
+# when you've given us a try, we'd love to know what you think:
+#    https://aka.ms/AA7q20u
+#
+name: orderclaptrap
+registry: ccr.ccs.tencentyun.com/v4ni11a
+extensions:
+  - name: dapr
+    components-path: "./dapr_components/"
+    config: claptrap_config
+  #    exclude-placement-container: true
+  #    placement-port: 6050
+  - name: zipkin
+  - name: seq
+services:
+  - name: orderclaptrap-webapi
+    project: OrderClaptrap.WebApi/OrderClaptrap.WebApi.csproj
+    bindings:
+      - port: 38000
+        name: http
+      - port: 38433
+        protocol: https
+        name: https
+  - name: orderclaptrap-backendserver
+    project: OrderClaptrap.BackendServer/OrderClaptrap.BackendServer.csproj
+  #- name: orderclaptrap-simulatorweb
+  #  project: OrderClaptrap.SimulatorWeb/OrderClaptrap.SimulatorWeb.csproj
+  #  bindings:
+  #    - port: 18000
+  #      name: http
+  #    - port: 18433
+  #      protocol: https
+  #      name: https
+  # - name: mongo
+  #   image: mongo
+  #   bindings:
+  #     - name: mongodb
+  #       containerPort: 27017
+  #       connectionString: mongodb://${env:MONGO_INITDB_ROOT_USERNAME}:${env:MONGO_INITDB_ROOT_PASSWORD}@${host}:${containerPort}/claptrap?authSource=admin
+  #   env:
+  #     - name: MONGO_INITDB_ROOT_USERNAME
+  #       value: root
+  #     - name: MONGO_INITDB_ROOT_PASSWORD
+  #       value: claptrap
+  # - name: mongo-express
+  #   image: mongo-express
+  #   bindings:
+  #     - name: mongodb
+  #       port: 58081
+  #       containerPort: 8081
+  #       protocol: http
+  #   env:
+  #     - name: MONGO_INITDB_ROOT_USERNAME
+  #       value: root
+  #     - name: MONGO_INITDB_ROOT_PASSWORD
+  #       value: claptrap
+  - name: zipkin
+    external: true
+    bindings:
+      - name: http
+        port: 9411
+  - name: seq
+    external: true
+    bindings:
+      - name: http
+        port: 5341
+#ingress:
+#  - name: webapi
+#    rules:
+#      - service: orderclaptrap-webapi
+#        path: /api
+#      - service: orderclaptrap-simulatorweb
+#        path: /
+#    bindings:
+#      - name: webapi
+#        protocol: http
+#        port: 36524

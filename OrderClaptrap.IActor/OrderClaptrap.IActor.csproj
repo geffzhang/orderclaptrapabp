@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Newbe.Claptrap.Attributes" Version="0.10.2" />
+        <PackageReference Include="Newbe.Claptrap.Dapr.Core" Version="0.10.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\OrderClaptrap.Models\OrderClaptrap.Models.csproj" />
+    </ItemGroup>
+    
+</Project>
